@@ -6,9 +6,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./src/style.css" />
         <title>Mind Maze | Quiz</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
-        <div id="app"></div>
+        <header class="header">
+            <h2 class="header__logo">Mind Maze</h2>
+        </header>
+
+        <main>
+            <section class="quiz-container">
+                <h1 class="quiz-container__heading">It's Quiz Time</h1>
+                <div class="quiz-progress"></div>
+                <section class="quiz-container__body"></section>
+                <button class="quiz-next-button">Next Question</button>
+            </section>
+        </main>
         <script type="module" src="/src/main.ts"></script>
     </body>
 </html>

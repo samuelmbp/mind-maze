@@ -6,7 +6,7 @@ type Question = {
     hint?: string;
 };
 
-const quizQuestions: Question[] = [
+export const quizQuestions: Question[] = [
     {
         questionText: "What is the largest ocean on Earth?",
         options: [
