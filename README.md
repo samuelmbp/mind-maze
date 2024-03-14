@@ -1,1 +1,1 @@
-# mind-maze
+# Mind Maze
