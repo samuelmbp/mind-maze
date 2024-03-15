@@ -8,8 +8,28 @@ const quizProgress = document.querySelector<HTMLDivElement>(".quiz-progress");
 const quizNextQuestionButton = document.querySelector<HTMLButtonElement>(
     ".quiz-container__next-button"
 );
+const congratulationsSection = document.querySelector<HTMLElement>(
+    ".quiz-container__congratulations"
+);
+const answeredCountSpan = document.querySelector<HTMLParagraphElement>(
+    ".congratulations__answered-count"
+);
+const totalCountSpan = document.querySelector<HTMLSpanElement>(
+    ".congratulations__total-count"
+);
 
-if (!quizContainerBody || !quizProgress || !quizNextQuestionButton)
+const playAgainButton = document.querySelector<HTMLButtonElement>(
+    ".congratulations__play-again-button"
+);
+
+if (
+    !quizContainerBody ||
+    !quizProgress ||
+    !quizNextQuestionButton ||
+    !congratulationsSection ||
+    !answeredCountSpan ||
+    !totalCountSpan
+)
     throw new Error("HTML Element does not exist...");
 
 let currentQuestionIndex: number = 0;
@@ -22,8 +42,11 @@ const renderQuestion = (question: Question) => {
         <div class="quiz-container__options-body">
             <ul class="quiz-options">
                 ${question.options
-                    .map((option, index) =>`
-                        <li data-index=${index} class="${questionAnswered ? "disabled" : ""}">
+                    .map(
+                        (option, index) => `
+                        <li data-index=${index} class="${
+                            questionAnswered ? "disabled" : ""
+                        }">
                             ${option}
                         </li>`
                     )
@@ -39,9 +62,20 @@ const displayProgress = (): void => {
     }`;
 };
 
+const renderCongratulationsMessage = (): void => {
+    congratulationsSection.style.display = "block";
+    answeredCountSpan.textContent = correctAnswers.toString();
+    totalCountSpan.textContent = quizQuestions.length.toString();
+    // TODO: Add confetti
+
+    quizNextQuestionButton.style.display = "none";
+    quizContainerBody.style.display = "none";
+};
+
 const checkAnswer = (selectedOption: number) => {
     const question = quizQuestions[currentQuestionIndex];
-    const optionsList = document.querySelectorAll<HTMLElement>(".quiz-options li");
+    const optionsList =
+        document.querySelectorAll<HTMLElement>(".quiz-options li");
 
     optionsList.forEach((option, index) => {
         if (index === selectedOption) {
@@ -69,9 +103,7 @@ const renderNextQuestion = () => {
         displayProgress();
         quizContainerBody.classList.remove("correct", "incorrect");
     } else {
-        alert(
-            `Quiz completed! You answered ${correctAnswers} out of ${quizQuestions.length} questions correctly.`
-        );
+        renderCongratulationsMessage();
     }
 };
 
