@@ -103,8 +103,16 @@ body {
         display: none;
 
         .congratulations__text {
-            font-size: 20px;
+            font-size: 16px;
             margin: 40px 0;
+        }
+
+        .score {
+            // background-color: rgba($color: #1b6898, $alpha: 0.6);
+            background-color: #1b6898;
+            // box-shadow: 3px 3px 4px #1b6898;
+            padding: 12px;
+            border-radius: 6px;
         }
 
         .congratulations__play-again-button {
@@ -116,7 +124,7 @@ body {
             background-color: #ffc600;
             cursor: pointer;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 14px;
         }
     }
 }
