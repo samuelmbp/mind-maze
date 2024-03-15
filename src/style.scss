@@ -66,10 +66,22 @@ body {
                 text-align: center;
                 cursor: pointer;
             }
+
+            .correct {
+                background-color: lightgreen;
+                // box-shadow: 3px 3px 4px lightgreen;
+                box-shadow: none;
+            }
+
+            .incorrect {
+                background-color: tomato;
+                // box-shadow: 3px 3px 4px tomato;
+                box-shadow: none;
+            }
         }
     }
 
-    .quiz-next-button {
+    &__next-button {
         outline: none;
         width: 100%;
         border: none;
@@ -78,5 +90,6 @@ body {
         border-radius: 20px;
         background-color: #ffc600;
         cursor: pointer;
+        font-weight: bold;
     }
 }
