@@ -8,13 +8,13 @@ const quizProgress = document.querySelector<HTMLDivElement>(".quiz-progress");
 const quizNextQuestionButton = document.querySelector<HTMLButtonElement>(
     ".quiz-container__next-button"
 );
-console.log(quizNextQuestionButton);
 
 if (!quizContainerBody || !quizProgress || !quizNextQuestionButton)
     throw new Error("HTML Element does not exist...");
 
 let currentQuestionIndex: number = 0;
 let correctAnswers: number = 0;
+let questionAnswered: boolean = false;
 
 const renderQuestion = (question: Question) => {
     quizContainerBody.innerHTML = `
@@ -22,7 +22,11 @@ const renderQuestion = (question: Question) => {
         <div class="quiz-container__options-body">
             <ul class="quiz-options">
                 ${question.options
-                    .map((option) => `<li>${option}</li>`)
+                    .map((option, index) =>`
+                        <li data-index=${index} class="${questionAnswered ? "disabled" : ""}">
+                            ${option}
+                        </li>`
+                    )
                     .join("")}
             </ul>
         </div>       
@@ -37,8 +41,7 @@ const displayProgress = (): void => {
 
 const checkAnswer = (selectedOption: number) => {
     const question = quizQuestions[currentQuestionIndex];
-    const optionsList =
-        document.querySelectorAll<HTMLElement>(".quiz-options li");
+    const optionsList = document.querySelectorAll<HTMLElement>(".quiz-options li");
 
     optionsList.forEach((option, index) => {
         if (index === selectedOption) {
@@ -49,23 +52,41 @@ const checkAnswer = (selectedOption: number) => {
             } else {
                 option.classList.add("incorrect");
             }
+        } else {
+            // Disable all other options
+            option.style.pointerEvents = "none";
         }
     });
+
+    questionAnswered = true;
 };
 
 const renderNextQuestion = () => {
     if (currentQuestionIndex < quizQuestions.length - 1) {
         currentQuestionIndex++;
+        questionAnswered = false;
         renderQuestion(quizQuestions[currentQuestionIndex]);
         displayProgress();
+        quizContainerBody.classList.remove("correct", "incorrect");
     } else {
-        console.log("End game");
+        alert(
+            `Quiz completed! You answered ${correctAnswers} out of ${quizQuestions.length} questions correctly.`
+        );
     }
 };
+
+// TODO: Refactor by extracting the logic into a function
+quizContainerBody.addEventListener("click", (event: Event) => {
+    const target = event.target as HTMLElement;
+
+    if (target.tagName === "LI") {
+        const selectedOptionIndex = parseInt(target.dataset.index || "0");
+        checkAnswer(selectedOptionIndex);
+    }
+});
 
 quizNextQuestionButton.addEventListener("click", renderNextQuestion);
 
 // Initial render
 renderQuestion(quizQuestions[currentQuestionIndex]);
 displayProgress();
-checkAnswer(3);
