@@ -28,7 +28,8 @@ if (
     !quizNextQuestionButton ||
     !congratulationsSection ||
     !answeredCountSpan ||
-    !totalCountSpan
+    !totalCountSpan ||
+    !playAgainButton
 )
     throw new Error("HTML Element does not exist...");
 
@@ -117,7 +118,21 @@ quizContainerBody.addEventListener("click", (event: Event) => {
     }
 });
 
+const resetQuizGame = (): void => {
+    currentQuestionIndex = 0;
+    correctAnswers = 0;
+    questionAnswered = false;
+
+    renderQuestion(quizQuestions[currentQuestionIndex]);
+    displayProgress();
+
+    congratulationsSection.style.display = "none";
+    quizContainerBody.style.display = "block";
+    quizNextQuestionButton.style.display = "block";
+};
+
 quizNextQuestionButton.addEventListener("click", renderNextQuestion);
+playAgainButton.addEventListener("click", resetQuizGame);
 
 // Initial render
 renderQuestion(quizQuestions[currentQuestionIndex]);
