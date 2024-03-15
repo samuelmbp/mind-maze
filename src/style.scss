@@ -60,7 +60,8 @@ body {
             li {
                 margin: 20px;
                 background-color: white;
-                box-shadow: 3px 3px 4px #ffc600;
+                // box-shadow: 3px 3px 4px #ffc600;
+                box-shadow: 4px 4px 4px rgba($color: #062a4e, $alpha: 0.6);
                 padding: 12px;
                 border-radius: 20px;
                 text-align: center;

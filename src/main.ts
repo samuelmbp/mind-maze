@@ -5,12 +5,13 @@ const quizContainerBody = document.querySelector<HTMLElement>(
     ".quiz-container__body"
 );
 const quizProgress = document.querySelector<HTMLDivElement>(".quiz-progress");
-const quizNextQuestionButton = document.querySelector(
-    "quiz-container__next-button"
+const quizNextQuestionButton = document.querySelector<HTMLButtonElement>(
+    ".quiz-container__next-button"
 );
+console.log(quizNextQuestionButton);
 
-if (!quizContainerBody || !quizProgress)
-    throw new Error("Element does not exist...");
+if (!quizContainerBody || !quizProgress || !quizNextQuestionButton)
+    throw new Error("HTML Element does not exist...");
 
 let currentQuestionIndex: number = 0;
 let correctAnswers: number = 0;
@@ -28,9 +29,11 @@ const renderQuestion = (question: Question) => {
     `;
 };
 
-quizProgress.textContent = `Question ${currentQuestionIndex + 1}/${
-    quizQuestions.length
-}`;
+const displayProgress = (): void => {
+    quizProgress.textContent = `Question ${currentQuestionIndex + 1}/${
+        quizQuestions.length
+    }`;
+};
 
 const checkAnswer = (selectedOption: number) => {
     const question = quizQuestions[currentQuestionIndex];
@@ -50,6 +53,19 @@ const checkAnswer = (selectedOption: number) => {
     });
 };
 
+const renderNextQuestion = () => {
+    if (currentQuestionIndex < quizQuestions.length - 1) {
+        currentQuestionIndex++;
+        renderQuestion(quizQuestions[currentQuestionIndex]);
+        displayProgress();
+    } else {
+        console.log("End game");
+    }
+};
+
+quizNextQuestionButton.addEventListener("click", renderNextQuestion);
+
+// Initial render
 renderQuestion(quizQuestions[currentQuestionIndex]);
-checkAnswer(0);
-console.log(correctAnswers);
+displayProgress();
+checkAnswer(3);
