@@ -4,8 +4,12 @@ import { quizQuestions } from "./data/quizQuestions";
 const quizContainerBody = document.querySelector<HTMLElement>(
     ".quiz-container__body"
 );
+const quizProgress = document.querySelector<HTMLDivElement>(".quiz-progress");
 
-if (!quizContainerBody) throw new Error("Element does not exist...");
+if (!quizContainerBody || !quizProgress)
+    throw new Error("Element does not exist...");
+
+let currentQuestionIndex: number = 0;
 
 quizQuestions.forEach((question) => {
     quizContainerBody.innerHTML = `
@@ -19,3 +23,7 @@ quizQuestions.forEach((question) => {
         </div>       
     `;
 });
+
+quizProgress.textContent = `Question ${currentQuestionIndex + 1}/${
+    quizQuestions.length
+}`;
