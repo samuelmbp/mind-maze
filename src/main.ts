@@ -21,6 +21,9 @@ const totalCountSpan = document.querySelector<HTMLSpanElement>(
 const playAgainButton = document.querySelector<HTMLButtonElement>(
     ".congratulations__play-again-button"
 );
+const nextQuestionButton = document.querySelector<HTMLButtonElement>(
+    "#next-question-button"
+);
 
 if (
     !quizContainerBody ||
@@ -29,13 +32,15 @@ if (
     !congratulationsSection ||
     !answeredCountSpan ||
     !totalCountSpan ||
-    !playAgainButton
+    !playAgainButton ||
+    !nextQuestionButton
 )
     throw new Error("HTML Element does not exist...");
 
 let currentQuestionIndex: number = 0;
 let correctAnswers: number = 0;
 let questionAnswered: boolean = false;
+nextQuestionButton.disabled = true;
 
 const renderQuestion = (question: Question) => {
     quizContainerBody.innerHTML = `
@@ -103,6 +108,7 @@ const renderNextQuestion = () => {
         renderQuestion(quizQuestions[currentQuestionIndex]);
         displayProgress();
         quizContainerBody.classList.remove("correct", "incorrect");
+        nextQuestionButton.disabled = true;
     } else {
         renderCongratulationsMessage();
     }
@@ -115,6 +121,7 @@ quizContainerBody.addEventListener("click", (event: Event) => {
     if (target.tagName === "LI") {
         const selectedOptionIndex = parseInt(target.dataset.index || "0");
         checkAnswer(selectedOptionIndex);
+        nextQuestionButton.disabled = false;
     }
 });
 
@@ -129,6 +136,7 @@ const resetQuizGame = (): void => {
     congratulationsSection.style.display = "none";
     quizContainerBody.style.display = "block";
     quizNextQuestionButton.style.display = "block";
+    nextQuestionButton.disabled = true;
 };
 
 quizNextQuestionButton.addEventListener("click", renderNextQuestion);
