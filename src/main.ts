@@ -36,13 +36,21 @@ if (
 )
     throw new Error("HTML Element does not exist...");
 
-let currentQuestionIndex: number = 0;
-let correctAnswers: number = 0;
-let questionAnswered: boolean = false;
-// quizNextQuestionButton.disabled = true;
+type QuizState = {
+    currentQuestionIndex: number;
+    correctAnswers: number;
+    questionAnswered: boolean;
+};
+
+// Quiz State Variables
+let quizState: QuizState = {
+    currentQuestionIndex: 0,
+    correctAnswers: 0,
+    questionAnswered: false,
+};
 
 const renderQuestion = () => {
-    const question: Question = quizQuestions[currentQuestionIndex];
+    const question: Question = quizQuestions[quizState.currentQuestionIndex];
 
     quizContainerBody.innerHTML = `
         <h2 class="quiz-container__question">${question.questionText}</h2>
@@ -52,7 +60,7 @@ const renderQuestion = () => {
                     .map(
                         (option, index) => `
                         <li data-index=${index} class="${
-                            questionAnswered ? "disabled" : ""
+                            quizState.questionAnswered ? "disabled" : ""
                         }">
                             ${option}
                         </li>`
@@ -64,14 +72,14 @@ const renderQuestion = () => {
 };
 
 const displayProgress = (): void => {
-    quizProgress.textContent = `Question ${currentQuestionIndex + 1}/${
-        quizQuestions.length
-    }`;
+    quizProgress.textContent = `Question ${
+        quizState.currentQuestionIndex + 1
+    }/${quizQuestions.length}`;
 };
 
 const renderCongratulationsMessage = (): void => {
     congratulationsSection.style.display = "block";
-    answeredCountSpan.textContent = correctAnswers.toString();
+    answeredCountSpan.textContent = quizState.correctAnswers.toString();
     totalCountSpan.textContent = quizQuestions.length.toString();
     // TODO: Add confetti
 
@@ -80,7 +88,7 @@ const renderCongratulationsMessage = (): void => {
 };
 
 const checkAnswer = (selectedOption: number) => {
-    const question = quizQuestions[currentQuestionIndex];
+    const question = quizQuestions[quizState.currentQuestionIndex];
     const optionsList =
         document.querySelectorAll<HTMLElement>(".quiz-options li");
 
@@ -89,7 +97,7 @@ const checkAnswer = (selectedOption: number) => {
             if (index === question.correctAnswerIndex) {
                 option.classList.add("correct");
                 // ADD CONFETTI HERE
-                correctAnswers++;
+                quizState.correctAnswers++;
             } else {
                 option.classList.add("incorrect");
             }
@@ -99,7 +107,7 @@ const checkAnswer = (selectedOption: number) => {
         }
     });
 
-    questionAnswered = true;
+    quizState.questionAnswered = true;
 };
 
 const handleOptionClick = (event: Event) => {
@@ -113,9 +121,9 @@ const handleOptionClick = (event: Event) => {
 };
 
 const handleNextQuestionClick = () => {
-    if (currentQuestionIndex < quizQuestions.length - 1) {
-        currentQuestionIndex++;
-        questionAnswered = false;
+    if (quizState.currentQuestionIndex < quizQuestions.length - 1) {
+        quizState.currentQuestionIndex++;
+        quizState.questionAnswered = false;
         renderQuestion();
         displayProgress();
         quizContainerBody.classList.remove("correct", "incorrect");
@@ -126,9 +134,11 @@ const handleNextQuestionClick = () => {
 };
 
 const resetQuizGame = (): void => {
-    currentQuestionIndex = 0;
-    correctAnswers = 0;
-    questionAnswered = false;
+    quizState = {
+        currentQuestionIndex: 0,
+        correctAnswers: 0,
+        questionAnswered: false,
+    };
 
     renderQuestion();
     displayProgress();
