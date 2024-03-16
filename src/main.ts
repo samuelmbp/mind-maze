@@ -5,12 +5,15 @@ const quizContainerBody = document.querySelector<HTMLElement>(
     ".quiz-container__body"
 );
 const quizProgress = document.querySelector<HTMLDivElement>(".quiz-progress");
+
 const quizNextQuestionButton = document.querySelector<HTMLButtonElement>(
     ".quiz-container__next-button"
 );
+
 const congratulationsSection = document.querySelector<HTMLElement>(
     ".quiz-container__congratulations"
 );
+
 const answeredCountSpan = document.querySelector<HTMLParagraphElement>(
     ".congratulations__answered-count"
 );
@@ -21,28 +24,26 @@ const totalCountSpan = document.querySelector<HTMLSpanElement>(
 const playAgainButton = document.querySelector<HTMLButtonElement>(
     ".congratulations__play-again-button"
 );
-const nextQuestionButton = document.querySelector<HTMLButtonElement>(
-    "#next-question-button"
-);
 
 if (
     !quizContainerBody ||
     !quizProgress ||
-    !quizNextQuestionButton ||
     !congratulationsSection ||
     !answeredCountSpan ||
     !totalCountSpan ||
     !playAgainButton ||
-    !nextQuestionButton
+    !quizNextQuestionButton
 )
     throw new Error("HTML Element does not exist...");
 
 let currentQuestionIndex: number = 0;
 let correctAnswers: number = 0;
 let questionAnswered: boolean = false;
-nextQuestionButton.disabled = true;
+// quizNextQuestionButton.disabled = true;
 
-const renderQuestion = (question: Question) => {
+const renderQuestion = () => {
+    const question: Question = quizQuestions[currentQuestionIndex];
+
     quizContainerBody.innerHTML = `
         <h2 class="quiz-container__question">${question.questionText}</h2>
         <div class="quiz-container__options-body">
@@ -101,47 +102,53 @@ const checkAnswer = (selectedOption: number) => {
     questionAnswered = true;
 };
 
-const renderNextQuestion = () => {
-    if (currentQuestionIndex < quizQuestions.length - 1) {
-        currentQuestionIndex++;
-        questionAnswered = false;
-        renderQuestion(quizQuestions[currentQuestionIndex]);
-        displayProgress();
-        quizContainerBody.classList.remove("correct", "incorrect");
-        nextQuestionButton.disabled = true;
-    } else {
-        renderCongratulationsMessage();
-    }
-};
-
-// TODO: Refactor by extracting the logic into a function
-quizContainerBody.addEventListener("click", (event: Event) => {
+const handleOptionClick = (event: Event) => {
     const target = event.target as HTMLElement;
 
     if (target.tagName === "LI") {
         const selectedOptionIndex = parseInt(target.dataset.index || "0");
         checkAnswer(selectedOptionIndex);
-        nextQuestionButton.disabled = false;
+        quizNextQuestionButton.disabled = false;
     }
-});
+};
+
+const handleNextQuestionClick = () => {
+    if (currentQuestionIndex < quizQuestions.length - 1) {
+        currentQuestionIndex++;
+        questionAnswered = false;
+        renderQuestion();
+        displayProgress();
+        quizContainerBody.classList.remove("correct", "incorrect");
+        quizNextQuestionButton.disabled = true;
+    } else {
+        renderCongratulationsMessage();
+    }
+};
 
 const resetQuizGame = (): void => {
     currentQuestionIndex = 0;
     correctAnswers = 0;
     questionAnswered = false;
 
-    renderQuestion(quizQuestions[currentQuestionIndex]);
+    renderQuestion();
     displayProgress();
 
     congratulationsSection.style.display = "none";
     quizContainerBody.style.display = "block";
     quizNextQuestionButton.style.display = "block";
-    nextQuestionButton.disabled = true;
+    quizNextQuestionButton.disabled = true;
 };
 
-quizNextQuestionButton.addEventListener("click", renderNextQuestion);
-playAgainButton.addEventListener("click", resetQuizGame);
-
 // Initial render
-renderQuestion(quizQuestions[currentQuestionIndex]);
-displayProgress();
+const initializeQuiz = () => {
+    quizNextQuestionButton.disabled = true;
+
+    renderQuestion();
+    displayProgress();
+
+    quizContainerBody.addEventListener("click", handleOptionClick);
+    quizNextQuestionButton.addEventListener("click", handleNextQuestionClick);
+    playAgainButton.addEventListener("click", resetQuizGame);
+};
+
+initializeQuiz();
