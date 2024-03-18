@@ -1,5 +1,6 @@
 import { QuizState } from "./quizState";
 import { quizQuestions } from "../data/quizQuestions";
+import { fireConfetti } from "../effects/confetti";
 
 export const renderCongratulationsMessage = (
     quizState: QuizState,
@@ -33,4 +34,5 @@ export const renderCongratulationsMessage = (
 
     quizNextQuestionButton.style.display = "none";
     quizContainerBody.style.display = "none";
+    fireConfetti();
 };

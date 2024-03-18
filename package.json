@@ -13,5 +13,9 @@
     "sass": "^1.72.0",
     "typescript": "^5.2.2",
     "vite": "^5.1.6"
+  },
+  "dependencies": {
+    "@types/canvas-confetti": "^1.6.4",
+    "canvas-confetti": "^1.9.2"
   }
 }
