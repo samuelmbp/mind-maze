@@ -60,16 +60,17 @@ body {
             li {
                 margin: 20px;
                 background-color: white;
-                box-shadow: 3px 3px 4px #ffc600;
+                box-shadow: 4px 6px 5px lightgrey;
                 padding: 12px;
                 border-radius: 20px;
                 text-align: center;
                 cursor: pointer;
             }
 
-            // li:hover {
-            //     background-color: #1b6898;
-            // }
+            li:hover {
+                // DESKTOP
+                box-shadow: 3px 3px 4px #062a4e;
+            }
 
             .disabled {
                 pointer-events: none;
@@ -157,5 +158,18 @@ body {
         border-radius: 10px;
         padding: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .quiz-container {
+        &__options-body {
+            &__quiz-options {
+                li:hover {
+                    // DESKTOP
+                    box-shadow: 3px 3px 4px #ffc600;
+                }
+            }
+        }
     }
 }

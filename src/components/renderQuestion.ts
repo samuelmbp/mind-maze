@@ -53,30 +53,8 @@ export const renderQuestion = (
     );
 
     if (hintIcon && hintContent) {
-        hintIcon.addEventListener("mouseenter", () => {
+        hintIcon.addEventListener("click", () => {
             hintContent.style.display = "block";
         });
-
-        hintIcon.addEventListener("mouseleave", () => {
-            hintContent.style.display = "none";
-        });
     }
-
-    // const hintIcon = quizContainerBody.querySelector<HTMLSpanElement>(
-    //     ".quiz-container__hint-icon"
-    // );
-
-    // if (!hintIcon) throw new Error("HTML Element does not exist...");
-
-    // hintIcon.addEventListener("mouseenter", () => {
-    //     if (question.hint) displayHintPopover(question.hint, quizContainerBody);
-    // });
-
-    // hintIcon.addEventListener("mouseleave", () => {
-    //     const hintPopoverContainer = document.querySelector<HTMLElement>(
-    //         ".quiz-container__hint-popover"
-    //     );
-
-    //     if (hintPopoverContainer) hintPopoverContainer.innerHTML = "";
-    // });
 };
