@@ -1,6 +1,6 @@
-// components/renderQuestion.ts
 import { QuizState } from "./quizState";
 import { Question, quizQuestions } from "../data/quizQuestions";
+import icon from "../assets/info.png";
 
 export const renderQuestion = (
     quizState: QuizState,
@@ -12,7 +12,7 @@ export const renderQuestion = (
         throw new Error("HTML Element does not exist...");
     }
 
-    quizContainerBody.innerHTML = `
+    let questionHTML = `
     <h2 class="quiz-container__question">${question.questionText}</h2>
     <div class="quiz-container__options-body">
       <ul class="quiz-options">
@@ -26,7 +26,57 @@ export const renderQuestion = (
               </li>`
             )
             .join("")}
+
+            <span class="quiz-container__hint-icon"> 
+                <img src=${icon} />
+            </span> 
       </ul>
-    </div>       
+    </div>      
+    
   `;
+
+    if (question.hint) {
+        questionHTML += `
+            <div class="quiz-container__hint-content">
+                <p>${question.hint}</p>
+            </div>
+        `;
+    }
+
+    quizContainerBody.innerHTML = questionHTML;
+
+    const hintIcon = quizContainerBody.querySelector<HTMLSpanElement>(
+        ".quiz-container__hint-icon"
+    );
+    const hintContent = quizContainerBody.querySelector<HTMLElement>(
+        ".quiz-container__hint-content"
+    );
+
+    if (hintIcon && hintContent) {
+        hintIcon.addEventListener("mouseenter", () => {
+            hintContent.style.display = "block";
+        });
+
+        hintIcon.addEventListener("mouseleave", () => {
+            hintContent.style.display = "none";
+        });
+    }
+
+    // const hintIcon = quizContainerBody.querySelector<HTMLSpanElement>(
+    //     ".quiz-container__hint-icon"
+    // );
+
+    // if (!hintIcon) throw new Error("HTML Element does not exist...");
+
+    // hintIcon.addEventListener("mouseenter", () => {
+    //     if (question.hint) displayHintPopover(question.hint, quizContainerBody);
+    // });
+
+    // hintIcon.addEventListener("mouseleave", () => {
+    //     const hintPopoverContainer = document.querySelector<HTMLElement>(
+    //         ".quiz-container__hint-popover"
+    //     );
+
+    //     if (hintPopoverContainer) hintPopoverContainer.innerHTML = "";
+    // });
 };

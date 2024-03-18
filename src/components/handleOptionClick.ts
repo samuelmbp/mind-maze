@@ -1,4 +1,3 @@
-// import { quizNextQuestionButton } from "../main";
 import { checkAnswer } from "./checkAnswer";
 import { QuizState } from "./quizState";
 

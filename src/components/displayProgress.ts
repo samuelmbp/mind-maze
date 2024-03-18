@@ -1,4 +1,3 @@
-// components/displayProgress.ts
 import { QuizState } from "./quizState";
 import { quizQuestions } from "../data/quizQuestions";
 

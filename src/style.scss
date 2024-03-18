@@ -35,7 +35,6 @@ body {
         margin: 20px 0;
         font-size: 18px;
     }
-
     &__heading {
         color: #ffc600;
         font-size: 36px;
@@ -49,6 +48,7 @@ body {
         background: #f4f4fc;
         color: black;
         border-radius: 10px;
+        height: 420px;
 
         .quiz-options {
             list-style: none;
@@ -61,12 +61,15 @@ body {
                 margin: 20px;
                 background-color: white;
                 box-shadow: 3px 3px 4px #ffc600;
-                // box-shadow: 4px 4px 4px rgba($color: #062a4e, $alpha: 0.6);
                 padding: 12px;
                 border-radius: 20px;
                 text-align: center;
                 cursor: pointer;
             }
+
+            // li:hover {
+            //     background-color: #1b6898;
+            // }
 
             .disabled {
                 pointer-events: none;
@@ -74,16 +77,30 @@ body {
 
             .correct {
                 background-color: lightgreen;
-                // box-shadow: 3px 3px 4px lightgreen;
                 box-shadow: none;
             }
 
             .incorrect {
                 background-color: tomato;
-                // box-shadow: 3px 3px 4px tomato;
                 box-shadow: none;
             }
         }
+    }
+
+    &__hint-icon {
+        cursor: pointer;
+        margin: 20px auto;
+    }
+
+    &__hint-content {
+        display: none;
+        color: #000000;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(#1b6898, 0.5);
+        border-radius: 12px;
+        padding: 10px;
+        margin: 20px auto;
+        width: 100%; // Change on desktop view
     }
 
     &__next-button {
@@ -91,7 +108,7 @@ body {
         width: 100%;
         border: none;
         padding: 16px 50px;
-        margin-top: 42px;
+        margin-top: 30px;
         border-radius: 20px;
         background-color: #ffc600;
         cursor: pointer;
@@ -126,5 +143,19 @@ body {
             font-weight: bold;
             font-size: 14px;
         }
+    }
+}
+
+.hint-popover-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .hint-popover {
+        background-color: #ffc600;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 }

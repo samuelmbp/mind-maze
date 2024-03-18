@@ -1,4 +1,3 @@
-// components/handleNextQuestionClick.ts
 import { quizState } from "./quizState";
 import { renderQuestion } from "./renderQuestion";
 import { displayProgress } from "./displayProgress";
