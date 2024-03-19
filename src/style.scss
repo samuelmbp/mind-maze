@@ -89,8 +89,18 @@
         @include button-styles;
     }
 
+    &__next-button:hover {
+        background-color: #fcdc2a;
+        box-shadow: 3px 3px 3px #ffc600;
+    }
+
     &__congratulations {
         display: none;
+
+        .congratulations__heading {
+            font-size: 30px;
+            color: #ffc600;
+        }
 
         .congratulations__text {
             font-size: 16px;
@@ -105,6 +115,10 @@
 
         .congratulations__play-again-button {
             @include button-styles;
+        }
+        .congratulations__play-again-button:hover {
+            background-color: #fcdc2a;
+            box-shadow: 3px 3px 3px #ffc600;
         }
     }
 }
@@ -138,7 +152,6 @@
             .congratulations__text {
                 font-size: 18px;
                 margin: 40px 0;
-
             }
 
             .score {
