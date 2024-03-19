@@ -9,7 +9,7 @@ export const displayProgress = (quizState: QuizState): void => {
         throw new Error("HTML Element does not exist...");
     }
 
-    quizProgress.textContent = `Question ${
-        quizState.currentQuestionIndex + 1
-    }/${quizQuestions.length}`;
+    quizProgress.textContent = `${quizState.currentQuestionIndex + 1} of ${
+        quizQuestions.length
+    } Questions`;
 };

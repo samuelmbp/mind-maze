@@ -4,6 +4,8 @@ import { handleOptionClick } from "./handleOptionClick";
 import { handleNextQuestionClick } from "./handleNextQuestionClick";
 import { resetQuizGame } from "./resetQuizGame";
 import { quizState } from "./quizState";
+import { quizQuestions } from "../data/quizQuestions";
+import { shuffleQuestions } from "../utilities/shuffleQuestions";
 
 export const initializeQuiz = (
     quizContainerBody: HTMLElement,
@@ -25,12 +27,14 @@ export const initializeQuiz = (
     quizNextQuestionButton.addEventListener("click", () =>
         handleNextQuestionClick(quizContainerBody, quizNextQuestionButton)
     );
-    playAgainButton.addEventListener("click", () =>
+    playAgainButton.addEventListener("click", () => {
         resetQuizGame(
             quizState,
             quizContainerBody,
             quizNextQuestionButton,
             congratulationsSection
-        )
-    );
+        );
+        shuffleQuestions(quizQuestions);
+        renderQuestion(quizState, quizContainerBody);
+    });
 };
