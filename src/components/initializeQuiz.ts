@@ -14,8 +14,17 @@ export const initializeQuiz = (
     playAgainButton: HTMLButtonElement
 ) => {
     quizNextQuestionButton.disabled = true;
+    const quizHeading =
+        document.querySelector<HTMLHeadingElement>("#quiz-heading");
+    const progress = document.querySelector<HTMLDivElement>("#progress");
 
-    if (!quizContainerBody || !quizNextQuestionButton || !playAgainButton)
+    if (
+        !quizContainerBody ||
+        !quizNextQuestionButton ||
+        !playAgainButton ||
+        !quizHeading ||
+        !progress
+    )
         throw new Error("HTMLElement does not exist");
 
     renderQuestion(quizState, quizContainerBody);
@@ -36,5 +45,7 @@ export const initializeQuiz = (
         );
         shuffleQuestions(quizQuestions);
         renderQuestion(quizState, quizContainerBody);
+        quizHeading.style.display = "block";
+        progress.style.display = "inline-block";
     });
 };

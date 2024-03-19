@@ -31,13 +31,13 @@ export const quizQuestions: Question[] = [
         explanation: "Harper Lee wrote 'To Kill a Mockingbird'.",
         hint: "The author's first name is the surname of a famous civil rights activist.",
     },
-    // {
-    //     questionText: "What is the chemical symbol for gold?",
-    //     options: ["Au", "Ag", "Fe", "Hg"],
-    //     correctAnswerIndex: 0,
-    //     explanation: "The chemical symbol for gold is Au.",
-    //     hint: "Think of the periodic table.",
-    // },
+    {
+        questionText: "What is the chemical symbol for gold?",
+        options: ["Au", "Ag", "Fe", "Hg"],
+        correctAnswerIndex: 0,
+        explanation: "The chemical symbol for gold is Au.",
+        hint: "Think of the periodic table.",
+    },
     // {
     //     questionText: "Which country is known as the Land of the Rising Sun?",
     //     options: ["China", "Japan", "India", "South Korea"],

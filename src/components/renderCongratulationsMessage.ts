@@ -18,12 +18,19 @@ export const renderCongratulationsMessage = (
         ".congratulations__total-count"
     );
 
+    const quizHeading =
+        document.querySelector<HTMLHeadingElement>("#quiz-heading");
+
+    const progress = document.querySelector<HTMLDivElement>("#progress");
+
     if (
         !answeredCountSpan ||
         !totalCountSpan ||
         !quizNextQuestionButton ||
         !quizContainerBody ||
-        !congratulationsSection
+        !congratulationsSection ||
+        !quizHeading ||
+        !progress
     ) {
         throw new Error("HTML Element does not exist...");
     }
@@ -34,5 +41,7 @@ export const renderCongratulationsMessage = (
 
     quizNextQuestionButton.style.display = "none";
     quizContainerBody.style.display = "none";
+    quizHeading.style.display = "none";
+    progress.style.display = "none";
     fireConfetti();
 };

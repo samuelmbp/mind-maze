@@ -24,8 +24,10 @@
 
         <main>
             <section class="quiz-container">
-                <h1 class="quiz-container__heading">It's Quiz Time</h1>
-                <div class="quiz-progress"></div>
+                <h1 id="quiz-heading" class="quiz-container__heading">
+                    It's Quiz Time
+                </h1>
+                <div id="progress" class="quiz-progress"></div>
                 <section class="quiz-container__body"></section>
                 <button
                     id="next-question-button"
@@ -35,7 +37,7 @@
                 </button>
 
                 <div class="quiz-container__congratulations">
-                    <h2>Congratulations!</h2>
+                    <h2 class="congratulations__heading">Congratulations!</h2>
                     <p class="congratulations__text">
                         You've completed the Mind Maze Quiz.
                     </p>

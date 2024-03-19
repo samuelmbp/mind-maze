@@ -111,7 +111,7 @@
 
 @media screen and (min-width: 768px) {
     .quiz-container {
-        padding: 0px 110px;
+        // padding: 0px 110px;
 
         &__options-body {
             border-radius: 20px;
@@ -130,12 +130,15 @@
 
         &__congratulations {
             padding: 12px 45px;
+
             .congratulations__heading {
-                font-size: 30px;
+                font-size: 38px;
+                color: #ffc600;
             }
             .congratulations__text {
                 font-size: 18px;
                 margin: 40px 0;
+
             }
 
             .score {
@@ -158,8 +161,6 @@
 
 @media screen and (min-width: 1024px) {
     .quiz-container {
-        padding: 0px 300px;
-
         .quiz-progress {
             padding: 8px 45px;
             margin: 20px 0;
@@ -172,6 +173,10 @@
 
         &__question {
             font-size: 28px;
+        }
+
+        &__body {
+            padding: 0 150px;
         }
 
         &__options-body {
