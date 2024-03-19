@@ -1,29 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    line-height: 1.5;
-    font-weight: 400;
-}
-
-body {
-    background-color: #062a4e;
-    font-family: "Outfit", sans-serif;
-    color: #fff;
-}
-
-.header {
-    color: #fff;
-    padding: 30px;
-    display: flex;
-    gap: 10px;
-    justify-content: flex-start;
-    align-items: center;
-
-    &__logo {
-        font-size: 28px;
-    }
-}
+@use "./styles/reset";
+@use "./styles/_header";
+@import "./styles/mixins";
 
 .quiz-container {
     padding: 20px;
@@ -109,16 +86,7 @@ body {
     }
 
     &__next-button {
-        outline: none;
-        width: 100%;
-        border: none;
-        padding: 16px 50px;
-        margin-top: 30px;
-        border-radius: 20px;
-        background-color: #ffc600;
-        cursor: pointer;
-        font-weight: bold;
-        font-size: 16px;
+        @include button-styles;
     }
 
     &__congratulations {
@@ -130,49 +98,115 @@ body {
         }
 
         .score {
-            // background-color: rgba($color: #1b6898, $alpha: 0.6);
             background-color: #1b6898;
-            // box-shadow: 3px 3px 4px #1b6898;
             padding: 12px;
             border-radius: 6px;
         }
 
         .congratulations__play-again-button {
-            outline: none;
-            width: 100%;
-            border: none;
-            padding: 16px 50px;
-            border-radius: 20px;
-            background-color: #ffc600;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
+            @include button-styles;
         }
-    }
-}
-
-.hint-popover-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    .hint-popover {
-        background-color: #ffc600;
-        border-radius: 10px;
-        padding: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 }
 
 @media screen and (min-width: 768px) {
     .quiz-container {
+        padding: 0px 110px;
+
         &__options-body {
-            &__quiz-options {
-                li:hover {
-                    // DESKTOP
-                    box-shadow: 3px 3px 4px #ffc600;
-                }
+            border-radius: 20px;
+        }
+
+        &__hint-content {
+            padding: 20px;
+            margin: 20px auto;
+            width: 100%; // Change on desktop view
+        }
+
+        &__next-button {
+            width: 100%;
+            font-size: 18px;
+        }
+
+        &__congratulations {
+            padding: 12px 45px;
+            .congratulations__heading {
+                font-size: 30px;
+            }
+            .congratulations__text {
+                font-size: 18px;
+                margin: 40px 0;
+            }
+
+            .score {
+                background-color: #1b6898;
+                box-shadow: 3px 3px 3px #ffc600;
+                padding: 35px;
+                width: 70%;
+                margin: 55px auto;
+                font-size: 18px;
+            }
+
+            .congratulations__play-again-button {
+                width: 80%;
+                padding: 18px 50px;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .quiz-container {
+        padding: 0px 300px;
+
+        .quiz-progress {
+            padding: 8px 45px;
+            margin: 20px 0;
+            font-size: 20px;
+        }
+        &__heading {
+            color: #ffc600;
+            font-size: 42px;
+        }
+
+        &__question {
+            font-size: 28px;
+        }
+
+        &__options-body {
+            background: #f4f4fc;
+            color: #062a4e;
+            border-radius: 10px;
+            height: 440px;
+            font-size: 18px;
+        }
+
+        &__hint-content {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(#1b6898, 0.5);
+            padding: 30px;
+            margin: 20px auto;
+            width: 40%; // Change on desktop view
+        }
+
+        &__next-button {
+            width: 40%;
+            font-size: 18px;
+            margin: 40px auto;
+        }
+
+        &__congratulations {
+            padding: 12px 55px;
+
+            .score {
+                box-shadow: 3px 3px 3px #ffc600;
+                width: 50%;
+                margin: 55px auto;
+            }
+
+            .congratulations__play-again-button {
+                width: 50%;
             }
         }
     }
