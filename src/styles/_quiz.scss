@@ -1,0 +1,259 @@
+@use "./variables" as *;
+@import "./mixins";
+
+.quiz-container {
+    padding: 20px;
+    text-align: center;
+    height: 100vh;
+
+    .quiz-progress {
+        color: $white;
+        background-color: rgba($color: #000000, $alpha: 0.8);
+        border-radius: 12px;
+        display: inline-block;
+        padding: 12px 45px;
+        margin: 20px 0;
+        font-size: 18px;
+    }
+    &__heading {
+        color: $dark-yellow;
+        font-size: 36px;
+    }
+
+    &__question {
+        margin-top: 16px;
+    }
+
+    &__options-body {
+        background: $light-gray;
+        color: black;
+        border-radius: 10px;
+        height: 420px;
+
+        .quiz-options {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 20px;
+
+            li {
+                margin: 20px;
+                background-color: $white;
+                box-shadow: 4px 6px 5px $light-gray;
+                padding: 12px;
+                border-radius: 20px;
+                text-align: center;
+                cursor: pointer;
+                border: 1px solid tan;
+            }
+
+            li:hover {
+                // DESKTOP
+                box-shadow: 3px 3px 4px $dark-blue;
+            }
+
+            .disabled {
+                pointer-events: none;
+            }
+
+            .correct {
+                background-color: $green;
+                box-shadow: none;
+            }
+
+            .incorrect {
+                background-color: $red;
+                box-shadow: none;
+            }
+        }
+    }
+
+    &__hint-icon {
+        cursor: pointer;
+        margin: 20px auto;
+    }
+
+    &__hint-content {
+        display: none;
+        color: #000000;
+        background-color: $white;
+        box-shadow: 0 2px 5px rgba($light-blue, 0.5);
+        border-radius: 12px;
+        padding: 10px;
+        margin: 20px auto;
+        width: 100%; // Change on desktop view
+    }
+
+    &__next-button {
+        @include button-styles;
+    }
+
+    &__next-button:hover {
+        background-color: $light-yellow;
+        box-shadow: 3px 3px 3px $dark-yellow;
+    }
+
+    &__congratulations {
+        display: none;
+
+        .congratulations__heading {
+            font-size: 30px;
+            color: $dark-yellow;
+        }
+
+        .congratulations__text {
+            font-size: 16px;
+            margin: 40px 0;
+        }
+
+        .score {
+            background-color: $light-blue;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .congratulations__play-again-button {
+            @include button-styles;
+        }
+        .congratulations__play-again-button:hover {
+            background-color: $light-yellow;
+            box-shadow: 3px 3px 3px $dark-yellow;
+        }
+        .view-score-history-button {
+            @include button-styles;
+            width: 100%;
+        }
+        .view-score-history-button:hover {
+            background-color: $light-yellow;
+            box-shadow: 3px 3px 3px $dark-yellow;
+        }
+
+        .congratulations__buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .quiz-container {
+        &__options-body {
+            border-radius: 20px;
+        }
+
+        &__body {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        &__hint-content {
+            padding: 20px;
+            margin: 20px auto;
+            width: 100%;
+        }
+
+        &__next-button {
+            width: 80%;
+            font-size: 18px;
+            margin: 30px auto;
+        }
+
+        &__congratulations {
+            padding: 12px 45px;
+
+            .congratulations__heading {
+                font-size: 38px;
+                color: $dark-yellow;
+            }
+            .congratulations__text {
+                font-size: 18px;
+                margin: 40px 0;
+            }
+
+            .score {
+                background-color: $light-blue;
+                box-shadow: 3px 3px 3px $dark-yellow;
+                padding: 35px;
+                width: 70%;
+                margin: 55px auto;
+                font-size: 18px;
+            }
+
+            .congratulations__play-again-button {
+                width: 60%;
+                padding: 18px 50px;
+                font-size: 16px;
+            }
+
+            .view-score-history-button {
+                @include button-styles;
+                width: 60%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .quiz-container {
+        .quiz-progress {
+            padding: 8px 45px;
+            margin: 20px 0;
+            font-size: 20px;
+        }
+        &__heading {
+            color: $dark-yellow;
+            font-size: 42px;
+        }
+
+        &__question {
+            font-size: 28px;
+        }
+
+        &__body {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        &__options-body {
+            background: $light-gray;
+            color: $dark-blue;
+            height: 450px;
+            font-size: 18px;
+        }
+
+        &__hint-content {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba($light-blue, 0.5);
+            padding: 16px;
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        &__next-button {
+            width: 30%;
+            font-size: 18px;
+            margin: 40px auto;
+        }
+
+        &__congratulations {
+            padding: 12px 55px;
+
+            .score {
+                box-shadow: 3px 3px 3px $dark-yellow;
+                width: 40%;
+                margin: 55px auto;
+            }
+
+            .congratulations__play-again-button {
+                width: 40%;
+            }
+
+            .view-score-history-button {
+                width: 40%;
+            }
+        }
+    }
+}

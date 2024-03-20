@@ -12,6 +12,17 @@ export const handleNextQuestionClick = (
         throw new Error("HTMLElement does not exist..");
     }
 
+    if (quizState.currentQuestionIndex >= quizQuestions.length - 1) {
+        const scoreHistory = JSON.parse(
+            localStorage.getItem("scoreHistory") || "[]"
+        );
+        scoreHistory.push({
+            date: new Date().toLocaleString(),
+            score: quizState.correctAnswers,
+        });
+        localStorage.setItem("scoreHistory", JSON.stringify(scoreHistory));
+    }
+
     if (quizState.currentQuestionIndex < quizQuestions.length - 1) {
         quizState.currentQuestionIndex++;
         quizState.questionAnswered = false;
