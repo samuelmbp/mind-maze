@@ -1,5 +1,6 @@
 @use "./styles/reset";
 @use "./styles/_header";
+@use "./styles/variables" as *;
 @import "./styles/mixins";
 
 .quiz-container {
@@ -8,7 +9,7 @@
     height: 100vh;
 
     .quiz-progress {
-        color: white;
+        color: $white;
         background-color: rgba($color: #000000, $alpha: 0.8);
         border-radius: 12px;
         display: inline-block;
@@ -17,7 +18,7 @@
         font-size: 18px;
     }
     &__heading {
-        color: #ffc600;
+        color: $dark-yellow;
         font-size: 36px;
     }
 
@@ -26,7 +27,7 @@
     }
 
     &__options-body {
-        background: #f4f4fc;
+        background: $light-gray; // CHOSE ANOTHER LIGHT GRAY
         color: black;
         border-radius: 10px;
         height: 420px;
@@ -40,17 +41,18 @@
 
             li {
                 margin: 20px;
-                background-color: white;
-                box-shadow: 4px 6px 5px lightgrey;
+                background-color: $white;
+                box-shadow: 4px 6px 5px $light-gray;
                 padding: 12px;
                 border-radius: 20px;
                 text-align: center;
                 cursor: pointer;
+                border: 1px solid tan;
             }
 
             li:hover {
                 // DESKTOP
-                box-shadow: 3px 3px 4px #062a4e;
+                box-shadow: 3px 3px 4px $dark-blue;
             }
 
             .disabled {
@@ -58,12 +60,12 @@
             }
 
             .correct {
-                background-color: lightgreen;
+                background-color: $green;
                 box-shadow: none;
             }
 
             .incorrect {
-                background-color: tomato;
+                background-color: $red;
                 box-shadow: none;
             }
         }
@@ -77,8 +79,8 @@
     &__hint-content {
         display: none;
         color: #000000;
-        background-color: #fff;
-        box-shadow: 0 2px 5px rgba(#1b6898, 0.5);
+        background-color: $white;
+        box-shadow: 0 2px 5px rgba($light-blue, 0.5);
         border-radius: 12px;
         padding: 10px;
         margin: 20px auto;
@@ -90,8 +92,8 @@
     }
 
     &__next-button:hover {
-        background-color: #fcdc2a;
-        box-shadow: 3px 3px 3px #ffc600;
+        background-color: $light-yellow;
+        box-shadow: 3px 3px 3px $dark-yellow;
     }
 
     &__congratulations {
@@ -99,7 +101,7 @@
 
         .congratulations__heading {
             font-size: 30px;
-            color: #ffc600;
+            color: $dark-yellow;
         }
 
         .congratulations__text {
@@ -108,7 +110,7 @@
         }
 
         .score {
-            background-color: #1b6898;
+            background-color: $light-blue;
             padding: 12px;
             border-radius: 6px;
         }
@@ -117,18 +119,21 @@
             @include button-styles;
         }
         .congratulations__play-again-button:hover {
-            background-color: #fcdc2a;
-            box-shadow: 3px 3px 3px #ffc600;
+            background-color: $light-yellow;
+            box-shadow: 3px 3px 3px $dark-yellow;
         }
     }
 }
 
 @media screen and (min-width: 768px) {
     .quiz-container {
-        // padding: 0px 110px;
-
         &__options-body {
             border-radius: 20px;
+        }
+
+        &__body {
+            width: 80%;
+            margin: 0 auto;
         }
 
         &__hint-content {
@@ -138,8 +143,9 @@
         }
 
         &__next-button {
-            width: 100%;
+            width: 80%;
             font-size: 18px;
+            margin: 30px auto;
         }
 
         &__congratulations {
@@ -147,7 +153,7 @@
 
             .congratulations__heading {
                 font-size: 38px;
-                color: #ffc600;
+                color: $dark-yellow;
             }
             .congratulations__text {
                 font-size: 18px;
@@ -155,8 +161,8 @@
             }
 
             .score {
-                background-color: #1b6898;
-                box-shadow: 3px 3px 3px #ffc600;
+                background-color: $light-blue;
+                box-shadow: 3px 3px 3px $dark-yellow;
                 padding: 35px;
                 width: 70%;
                 margin: 55px auto;
@@ -180,7 +186,7 @@
             font-size: 20px;
         }
         &__heading {
-            color: #ffc600;
+            color: $dark-yellow;
             font-size: 42px;
         }
 
@@ -189,27 +195,27 @@
         }
 
         &__body {
-            padding: 0 150px;
+            width: 60%;
+            margin: 0 auto;
         }
 
         &__options-body {
-            background: #f4f4fc;
-            color: #062a4e;
-            border-radius: 10px;
-            height: 440px;
+            background: $light-gray;
+            color: $dark-blue;
+            height: 450px;
             font-size: 18px;
         }
 
         &__hint-content {
             background-color: #fff;
-            box-shadow: 0 2px 5px rgba(#1b6898, 0.5);
-            padding: 30px;
+            box-shadow: 0 2px 5px rgba($light-blue, 0.5);
+            padding: 16px;
             margin: 20px auto;
-            width: 40%; // Change on desktop view
+            width: 50%; 
         }
 
         &__next-button {
-            width: 40%;
+            width: 30%;
             font-size: 18px;
             margin: 40px auto;
         }
@@ -218,7 +224,7 @@
             padding: 12px 55px;
 
             .score {
-                box-shadow: 3px 3px 3px #ffc600;
+                box-shadow: 3px 3px 3px $dark-yellow;
                 width: 50%;
                 margin: 55px auto;
             }

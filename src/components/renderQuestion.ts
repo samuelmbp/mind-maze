@@ -54,7 +54,8 @@ export const renderQuestion = (
 
     if (hintIcon && hintContent) {
         hintIcon.addEventListener("click", () => {
-            hintContent.style.display = "block";
+            hintContent.style.display =
+                hintContent.style.display === "block" ? "none" : "block";
         });
     }
 };
