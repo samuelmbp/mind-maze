@@ -38,52 +38,52 @@ export const quizQuestions: Question[] = [
         explanation: "The chemical symbol for gold is Au.",
         hint: "Think of the periodic table.",
     },
-    // {
-    //     questionText: "Which country is known as the Land of the Rising Sun?",
-    //     options: ["China", "Japan", "India", "South Korea"],
-    //     correctAnswerIndex: 1,
-    //     explanation: "Japan is known as the Land of the Rising Sun.",
-    //     hint: "It's an island nation in East Asia.",
-    // },
-    // {
-    //     questionText: "Who painted the Mona Lisa?",
-    //     options: [
-    //         "Vincent van Gogh",
-    //         "Pablo Picasso",
-    //         "Leonardo da Vinci",
-    //         "Michelangelo",
-    //     ],
-    //     correctAnswerIndex: 2,
-    //     explanation: "Leonardo da Vinci painted the Mona Lisa.",
-    //     hint: "The artist was also an inventor and scientist.",
-    // },
-    // {
-    //     questionText: "What is the capital of Australia?",
-    //     options: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
-    //     correctAnswerIndex: 2,
-    //     explanation: "Canberra is the capital of Australia.",
-    //     hint: "It's an inland city.",
-    // },
-    // {
-    //     questionText:
-    //         "Which planet is known as the 'Morning Star' or 'Evening Star'?",
-    //     options: ["Mercury", "Venus", "Mars", "Saturn"],
-    //     correctAnswerIndex: 1,
-    //     explanation: "Venus is known as the 'Morning Star' or 'Evening Star'.",
-    //     hint: "It's the brightest planet in the night sky.",
-    // },
-    // {
-    //     questionText: "Who wrote the play 'Romeo and Juliet'?",
-    //     options: [
-    //         "William Shakespeare",
-    //         "Jane Austen",
-    //         "Charles Dickens",
-    //         "Emily Brontë",
-    //     ],
-    //     correctAnswerIndex: 0,
-    //     explanation: "William Shakespeare wrote the play 'Romeo and Juliet'.",
-    //     hint: "Considered one of the greatest playwrights in history.",
-    // },
+    {
+        questionText: "Which country is known as the Land of the Rising Sun?",
+        options: ["China", "Japan", "India", "South Korea"],
+        correctAnswerIndex: 1,
+        explanation: "Japan is known as the Land of the Rising Sun.",
+        hint: "It's an island nation in East Asia.",
+    },
+    {
+        questionText: "Who painted the Mona Lisa?",
+        options: [
+            "Vincent van Gogh",
+            "Pablo Picasso",
+            "Leonardo da Vinci",
+            "Michelangelo",
+        ],
+        correctAnswerIndex: 2,
+        explanation: "Leonardo da Vinci painted the Mona Lisa.",
+        hint: "The artist was also an inventor and scientist.",
+    },
+    {
+        questionText: "What is the capital of Australia?",
+        options: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+        correctAnswerIndex: 2,
+        explanation: "Canberra is the capital of Australia.",
+        hint: "It's an inland city.",
+    },
+    {
+        questionText:
+            "Which planet is known as the 'Morning Star' or 'Evening Star'?",
+        options: ["Mercury", "Venus", "Mars", "Saturn"],
+        correctAnswerIndex: 1,
+        explanation: "Venus is known as the 'Morning Star' or 'Evening Star'.",
+        hint: "It's the brightest planet in the night sky.",
+    },
+    {
+        questionText: "Who wrote the play 'Romeo and Juliet'?",
+        options: [
+            "William Shakespeare",
+            "Jane Austen",
+            "Charles Dickens",
+            "Emily Brontë",
+        ],
+        correctAnswerIndex: 0,
+        explanation: "William Shakespeare wrote the play 'Romeo and Juliet'.",
+        hint: "Considered one of the greatest playwrights in history.",
+    },
     // {
     //     questionText: "What is the largest mammal in the world?",
     //     options: ["African Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
@@ -91,13 +91,13 @@ export const quizQuestions: Question[] = [
     //     explanation: "The Blue Whale is the largest mammal in the world.",
     //     hint: "It's an aquatic animal.",
     // },
-    // {
-    //     questionText: "What is the chemical symbol for water?",
-    //     options: ["O", "H2O", "H2", "H"],
-    //     correctAnswerIndex: 1,
-    //     explanation: "The chemical symbol for water is H2O.",
-    //     hint: "It consists of two elements.",
-    // },
+    {
+        questionText: "What is the chemical symbol for water?",
+        options: ["O", "H2O", "H2", "H"],
+        correctAnswerIndex: 1,
+        explanation: "The chemical symbol for water is H2O.",
+        hint: "It consists of two elements.",
+    },
     // {
     //     questionText: "Who wrote '1984'?",
     //     options: [
@@ -110,18 +110,18 @@ export const quizQuestions: Question[] = [
     //     explanation: "George Orwell wrote '1984'.",
     //     hint: "The author's real name is Eric Arthur Blair.",
     // },
-    // {
-    //     questionText: "What is the tallest mountain in the world?",
-    //     options: [
-    //         "Mount Kilimanjaro",
-    //         "Mount Everest",
-    //         "Mount McKinley",
-    //         "Mount Fuji",
-    //     ],
-    //     correctAnswerIndex: 1,
-    //     explanation: "Mount Everest is the tallest mountain in the world.",
-    //     hint: "It's part of the Himalayas.",
-    // },
+    {
+        questionText: "What is the tallest mountain in the world?",
+        options: [
+            "Mount Kilimanjaro",
+            "Mount Everest",
+            "Mount McKinley",
+            "Mount Fuji",
+        ],
+        correctAnswerIndex: 1,
+        explanation: "Mount Everest is the tallest mountain in the world.",
+        hint: "It's part of the Himalayas.",
+    },
     // {
     //     questionText: "Who discovered penicillin?",
     //     options: [
